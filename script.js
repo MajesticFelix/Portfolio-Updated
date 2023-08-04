@@ -4,13 +4,13 @@ let minPages = 1;
 let maxPages = 7;
 let currentPage = 1;
 const nameText = document.getElementById("name");
-const resume = document.getElementById("resume");
 const leftDivider = document.getElementById("left-divider");
 const rightDivider = document.getElementById("right-divider");
 const textContainer = document.getElementById("textContainer");
 const links = document.getElementById("links");
 const links1 = document.getElementById("links1");
 const links2 = document.getElementById("links2");
+const pageTrack = document.getElementById("pageTrack");
 let imageContainer = document.createElement("div");
 
 function createImageContainer(){
@@ -22,6 +22,17 @@ function createImageContainer(){
 }
 
 typeWriter(nameText, "Hi, my name is Felix", 100, 1);
+
+document.onclick = function(){ //Left click
+    if(currentPage != maxPages){
+        currentPage++;
+    }else if(currentPage == maxPages){
+        currentPage = minPages;
+    }
+    clearInterval(textInterval);
+    clearInterval(imageInterval);
+    updatePage();
+}
 
 document.onkeydown = function(e){
     if(e.keyCode == "39"){ //Right Arrow Key
@@ -68,7 +79,8 @@ function updatePage(){
                     display: "none",
                     opacity: 0,
                     maxWidth: "50%",
-                    maxHeight: "50%"
+                    maxHeight: "50%",
+                    caretColor: "transparent"
                 }
             },
             {
@@ -78,7 +90,8 @@ function updatePage(){
                     display: "none",
                     opacity: 0,
                     maxWidth: "50%",
-                    maxHeight: "50%"
+                    maxHeight: "50%",
+                    caretColor: "transparent"
                 }
             },
             {
@@ -88,7 +101,8 @@ function updatePage(){
                     display: "none",
                     opacity: 0,
                     maxWidth: "50%",
-                    maxHeight: "50%"
+                    maxHeight: "50%",
+                    caretColor: "transparent"
                 }
             },
             {
@@ -98,7 +112,8 @@ function updatePage(){
                     display: "none",
                     opacity: 0,
                     maxWidth: "60%",
-                    maxHeight: "60%"
+                    maxHeight: "60%",
+                    caretColor: "transparent"
                 }
             }
         ];
@@ -156,7 +171,8 @@ function updatePage(){
                     display: "none",
                     opacity: 0,
                     maxWidth: "100%",
-                    maxHeight: "100%"
+                    maxHeight: "100%",
+                    caretColor: "transparent"
                 }
             },
             {
@@ -166,7 +182,8 @@ function updatePage(){
                     display: "none",
                     opacity: 0,
                     maxWidth: "70%",
-                    maxHeight: "70%"
+                    maxHeight: "70%",
+                    caretColor: "transparent"
                 }
             }
         ];
@@ -204,7 +221,8 @@ function updatePage(){
                     display: "block",
                     opacity: 0,
                     maxWidth: "95%",
-                    maxHeight: "95%"
+                    maxHeight: "95%",
+                    caretColor: "transparent"
                 }
             }
         ];
@@ -232,7 +250,8 @@ function updatePage(){
                     display: "block",
                     opacity: 0,
                     maxWidth: "100%",
-                    maxHeight: "100%"
+                    maxHeight: "100%",
+                    caretColor: "transparent"
                 }
             }
         ];
@@ -260,7 +279,8 @@ function updatePage(){
                     display: "block",
                     opacity: 0,
                     maxWidth: "100%",
-                    maxHeight: "100%"
+                    maxHeight: "100%",
+                    caretColor: "transparent"
                 }
             }
         ];
@@ -279,6 +299,7 @@ function updatePage(){
         rightDivider.style.display = "none";
         links.style.display = "flex";
     }
+    pageTrack.innerText = `${currentPage} of ${maxPages}`;
 }
 
 function createImage(id, src, styles) {
